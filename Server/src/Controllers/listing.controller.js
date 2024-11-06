@@ -213,7 +213,7 @@ export const getListings = async (req, res, next) => {
     if (offer === undefined || offer === "false") {
       offer = { $in: [false, true] };
     }
-    
+
     let furnished = req.query.furnished;
     if (furnished === undefined || furnished === "false") {
       furnished = { $in: [false, true] };
@@ -226,7 +226,7 @@ export const getListings = async (req, res, next) => {
 
     let type = req.query.type;
     if (type === undefined || type === "all") {
-      type = { $in: ["sale", "rent"] };
+      type = { $in: ["sell", "rent"] };
     }
 
     const searchTerm = req.query.searchTerm || "";
@@ -238,14 +238,11 @@ export const getListings = async (req, res, next) => {
       offer,
       furnished,
       parking,
-      type,  
+      type,
     })
       .skip(startIndex)
       .limit(limit)
       .sort({ [sort]: order });
-
-    console.log(listings);
-    
 
     return res.status(200).json(listings);
   } catch (error) {
