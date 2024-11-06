@@ -76,7 +76,7 @@ const Listing = () => {
             <p className="py-1 bg-red-900 w-1/5 text-white text-center capitalize rounded-lg">
               For {listing.type}
             </p>
-            <p className="">Description - {listing.description}</p>
+            <p className=""><span className="font-bold">Description</span> - {listing.description}</p>
             <div className="flex items-center gap-10 text-green-900 font-semibold">
               <i className="ri-hotel-bed-line flex gap-2">
                 {listing.bedrooms} bed{listing.bedrooms > 1 && s}

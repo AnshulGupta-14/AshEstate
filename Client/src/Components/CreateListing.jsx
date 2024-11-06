@@ -16,7 +16,7 @@ const CreateListing = () => {
   const [address, setAddress] = useState("");
   const [furnished, setFurnished] = useState(false);
   const [parking, setParking] = useState(false);
-  const [type, setType] = useState("sell");
+  const [type, setType] = useState("sale");
   const [offer, setOffer] = useState(false);
   const [description, setDescription] = useState("");
   const [created, setCreated] = useState(false);
@@ -67,7 +67,7 @@ const CreateListing = () => {
         setAddress("");
         setFurnished(false);
         setParking(false);
-        setType("sell");
+        setType("sale");
         setOffer(false);
         setTitle("");
         setRegularPrice(0);
@@ -108,13 +108,13 @@ const CreateListing = () => {
               <input
                 className="h-4 w-4"
                 type="checkbox"
-                id="sell"
-                checked={type === "sell"}
+                id="sale"
+                checked={type === "sale"}
                 onChange={(e) =>
-                  handleChange(setType, e.target.checked ? "sell" : "rent")
+                  handleChange(setType, e.target.checked ? "sale" : "rent")
                 }
               />
-              <label htmlFor="sell">Sell</label>
+              <label htmlFor="sale">Sale</label>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -123,7 +123,7 @@ const CreateListing = () => {
                 id="rent"
                 checked={type === "rent"}
                 onChange={(e) =>
-                  handleChange(setType, e.target.checked ? "rent" : "sell")
+                  handleChange(setType, e.target.checked ? "rent" : "sale")
                 }
               />
               <label htmlFor="rent">Rent</label>
