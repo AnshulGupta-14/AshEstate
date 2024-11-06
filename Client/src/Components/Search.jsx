@@ -1,10 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "../Utils/Axios";
 import React, { useEffect, useState } from "react";
 import ListingItem from "./ListingItem";
 import { useSelector } from "react-redux";
 
 const Search = () => {
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   const location = useLocation();
   const [listings, setListings] = useState([]);
@@ -22,6 +23,10 @@ const Search = () => {
       setSearchTerm("");
     }
     const searchQuery = urlParams.toString();
+    if (searchQuery.split("=")[1] === "") {
+      navigate("/");
+    }
+
     axios
       .get(`/listings/get?${searchQuery}`)
       .then((res) => setListings(res.data))
