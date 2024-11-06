@@ -9,6 +9,7 @@ import PrivateRoute from "../Components/PrivateRoute";
 import CreateListing from "../Components/CreateListing";
 import UpdateListing from "../Components/UpdateListing";
 import Listing from "../Components/Listing";
+import Search from "../Components/Search";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
       <Route path="/sign-in" element={<SignIn />}></Route>
       <Route path="/sign-up" element={<SignUp />}></Route>
       <Route path="/listing/:id" element={<Listing />}></Route>
+      <Route path="search" element={<Search />}></Route>
       <Route element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/create-listing" element={<CreateListing />}></Route>

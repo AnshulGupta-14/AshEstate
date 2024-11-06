@@ -239,7 +239,7 @@ export const getListings = async (req, res, next) => {
       furnished,
       parking,
       type,
-    }) 
+    })
       .skip(startIndex)
       .limit(limit)
       .sort({ [sort]: order });
