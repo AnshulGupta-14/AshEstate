@@ -22,6 +22,7 @@ const Profile = () => {
   const [listing, setListing] = useState([]);
   const [listingError, setListingError] = useState(null);
   const [showListings, setShowListings] = useState(false);
+  const [deleteListings, setDeleteListings] = useState(false);
 
   const handleUpdate = () => {
     console.log(avatar);
@@ -84,14 +85,17 @@ const Profile = () => {
       });
   };
 
-  const handleDeleteListing = (id) => {
+  const handleDeleteListing = (e, id) => {
+    e.preventDefault();
     axios
       .delete(`/listings/delete/${id}`)
       .then(() => {
         setListing(listing.filter((item) => item._id !== id));
+        setDeleteListings(true);
       })
       .catch((err) => {
         setListingError(err.response.data.message);
+        setDeleteListings(false);
       });
   };
 
@@ -200,7 +204,7 @@ const Profile = () => {
                 </div>
                 <div className="flex flex-col">
                   <button
-                    onClick={() => handleDeleteListing(item._id)}
+                    onClick={(e) => handleDeleteListing(e, item._id)}
                     className="text-red-600 font-semibold"
                   >
                     Delete
@@ -218,6 +222,8 @@ const Profile = () => {
               </NavLink>
             );
           })}
+
+        {deleteListings && <p className="text-red-600 font-semibold">Listing deleted succesfully!</p>}
       </div>
     </div>
   );

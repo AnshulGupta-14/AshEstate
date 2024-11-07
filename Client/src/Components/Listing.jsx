@@ -79,10 +79,10 @@ const Listing = () => {
             <p className=""><span className="font-bold">Description</span> - {listing.description}</p>
             <div className="flex items-center gap-10 text-green-900 font-semibold">
               <i className="ri-hotel-bed-line flex gap-2">
-                {listing.bedrooms} bed{listing.bedrooms > 1 && s}
+                {listing.bedrooms} bed{listing.bedrooms > 1 && "s"}
               </i>
               <i className="ri-showers-line flex gap-2">
-                {listing.bathrooms} bath{listing.bathrooms > 1 && s}
+                {listing.bathrooms} bath{listing.bathrooms > 1 && "s"}
               </i>
               <i className="ri-parking-fill flex gap-1">
                 {listing.parking ? "Parking" : "No Parking"}

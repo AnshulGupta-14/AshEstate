@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Filter = () => {
@@ -47,7 +47,16 @@ const Filter = () => {
     navigate(`/search?${searchQuery}`);
   };
 
-  console.log(data, searchTerm);
+  useEffect(()=>{
+    const urlParams = new URLSearchParams(location.search);
+    setData({
+      type: urlParams.get("type") || "all",
+      parking: urlParams.get("parking") === "true",
+      furnished: urlParams.get("furnished") === "true",
+      sort: urlParams.get("sort") || "created_At",
+      order: urlParams.get("order") || "desc",
+    });
+  },[location.search])
 
   return (
     <div className="p-7">
