@@ -10,6 +10,7 @@ import CreateListing from "../Components/CreateListing";
 import UpdateListing from "../Components/UpdateListing";
 import Listing from "../Components/Listing";
 import Search from "../Components/Search";
+import Filter from "../Components/Filter";
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
       <Route path="/sign-up" element={<SignUp />}></Route>
       <Route path="/listing/:id" element={<Listing />}></Route>
       <Route path="search" element={<Search />}></Route>
+      <Route path="filter" element={<Filter />}></Route>
       <Route element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/create-listing" element={<CreateListing />}></Route>

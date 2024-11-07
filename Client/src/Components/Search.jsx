@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import axios from "../Utils/Axios";
 import React, { useEffect, useState } from "react";
 import ListingItem from "./ListingItem";
@@ -12,6 +12,7 @@ const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  let searchQuery = new URLSearchParams(location.search).toString();
 
   useEffect(() => {
     setLoading(true);
@@ -22,7 +23,7 @@ const Search = () => {
     } else {
       setSearchTerm("");
     }
-    const searchQuery = urlParams.toString();
+    searchQuery = urlParams.toString();
     if (searchQuery.split("=")[1] === "") {
       navigate("/");
     }
@@ -39,8 +40,17 @@ const Search = () => {
   );
 
   return (
-    <div>
-      <h1 className="text-center text-3xl font-bold my-5">Listing Results</h1>
+    <div className="p-7 flex flex-col gap-5">
+      <div className="flex gap-[35%] items-center">
+        <NavLink
+          to={`/filter?${searchQuery}`}
+          state={{ searchTerm }}
+          className="bg-slate-800 text-white h-1/2 p-1 px-3 rounded-lg"
+        >
+          Filter
+        </NavLink>
+        <h1 className="text-3xl font-bold">Listing Results</h1>
+      </div>
       {loading && (
         <p className="text-center text-3xl font-bold my-5">Loading...</p>
       )}
