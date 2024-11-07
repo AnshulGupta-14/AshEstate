@@ -8,7 +8,7 @@ const ListingItem = ({ listing }) => {
         <img
           src={listing.images[0]}
           alt=""
-          className="h-[25vh] w-[20vw] object-cover hover:scale-105"
+          className="h-[25vh] w-full object-cover hover:scale-105"
         />
         <div className="px-3 flex flex-col gap-2 py-3">
           <h2 className="truncate text-xl">{listing.title}</h2>
